@@ -29,17 +29,17 @@
 
               
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">회사소개</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/introduce'">회사소개</h2>
                                 
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">개인정보취급방침</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/rule'">개인정보취급방침</h2>
                     
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">이용약관</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/terms'">이용약관</h2>
                    
                 </div>
   

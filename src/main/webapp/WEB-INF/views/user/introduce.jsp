@@ -3,6 +3,7 @@
 <html>
 <meta charset="utf-8">
 <head>
+<title>회사소개</title>
     <%@ include file="../include/mainmenu.jsp" %>
 <!--
     
@@ -21,10 +22,10 @@ https://templatemo.com/tm-561-purple-buzz
     <!-- Start Contact -->
     <section class="container py-5">
 
-        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">대여안내</h1>
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">회사소개</h1>
               <p class="col-12 col-xl-8 text-left text-muted pb-5 light-300">
         <h2 class="col-12 col-xl-8 h4 text-left regular-400">   
-            ${guide.content }
+            ${intro.content }
          </h2>
 
     </section>

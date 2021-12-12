@@ -10,7 +10,7 @@
             <ul class="dropdown">
                 <li><a href="/admin/userList">회원목록</a></li>
                 <li><a href="/admin/userRegister">회원등록</a></li>
-                <li><a href="admin_sms">sms발송</a></li>
+              <!--   <li><a href="admin_sms">sms발송</a></li> -->
             </ul>
         </li>
         <li class="menu-dropdown">
@@ -29,11 +29,11 @@
           <li class="menu-dropdown">
             <span>텍스트,이미지수정 <i class="fas fa-chevron-down"></i></span>
             <ul class="dropdown">
-                <li><a href="#">대여안내</a></li>
-                <li><a href="#">회사소개</a></li>
-                <li><a href="#">개인정보취급방침</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">메인페이지이미지설정</a></li>
+                <li><a href="/admin/guide">대여안내</a></li>
+                <li><a href="/admin/introduce">회사소개</a></li>
+                <li><a href="/admin/rulewrite">개인정보취급방침</a></li>
+                <li><a href="/admin/termswrite">이용약관</a></li>
+                <!-- <li><a href="#">메인페이지이미지설정</a></li> -->
             </ul>
         </li>
         <li><a href='/'>일반화면</a></li>

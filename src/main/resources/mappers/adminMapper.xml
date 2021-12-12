@@ -140,8 +140,8 @@
 
 	<!-- 회원 등록 -->
 	<insert id="join">
-		 insert into user(userId, userPw, userName, userPhon)
-		  values(#{userId}, #{userPw}, #{userName}, #{userPhon}) 
+		 insert into user(userId, userPw, userName, userPhon, userMail)
+		  values(#{userId}, #{userPw}, #{userName}, #{userPhon}, #{userMail}) 
 	</insert>
 	
 	<!-- 최근 회원 7일기준 -->
@@ -164,4 +164,64 @@
 		select o.pdNum, o.amount, p.pdNum, p.pdName from boo_order o inner join product p where o.pdNum = p.pdNum order by amount desc 
 	</select>
 	
+	
+	<!-- 대여 안내 작성 -->
+	<insert id="guide" >
+		insert into guide(content) values(#{content})	
+	</insert>
+	
+	<!-- 대여 안내 수정 -->
+	<update id="guideModify">
+	UPDATE guide SET content = #{content} WHERE guideNum = 1
+	</update>
+	
+	<!-- 대여안내글 삭제 -->
+	<delete id="guideDelete">
+	 delete from  guide
+	</delete>
+	
+	<!-- 회사소개 작성-->
+	<insert id="introWrite">
+		insert into introduce(content) values(#{content})
+	</insert>
+	
+	<!-- 회사소개 수정 -->
+	<update id="introModify">
+		UPDATE introduce SET content = #{content} WHERE introduceNum = 1
+	</update>
+	
+	<!-- 회사소개 삭제 -->
+	<delete id="introDelete">
+	 delete from  introduce where introduceNum = 1
+	</delete>
+	
+	<!-- 개인정보취급방침 작성-->
+	<insert id="ruleWrite">
+		insert into rule(content) values(#{content})
+	</insert>
+	
+	<!-- 개인정보취급방침 수정 -->
+	<update id="ruleModify">
+		UPDATE rule SET content = #{content} WHERE ruleNum = 1
+	</update>
+	
+	<!-- 개인정보취급방침 삭제 -->
+	<delete id="ruleDelete">
+	 delete from  rule where ruleNum = 1
+	</delete>
+	
+	<!-- 이용약관 작성-->
+	<insert id="termsWrite">
+		insert into terms(content) values(#{content})
+	</insert>
+	
+	<!-- 이용약관 수정 -->
+	<update id="termsModify">
+		UPDATE terms SET content = #{content} WHERE termsNum = 1
+	</update>
+	
+	<!-- 이용약관 삭제 -->
+	<delete id="termsDelete">
+	 delete from  terms where termsNum = 1
+	</delete>
 </mapper>

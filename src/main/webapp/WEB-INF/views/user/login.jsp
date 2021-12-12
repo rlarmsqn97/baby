@@ -33,12 +33,12 @@
 								</c:if>
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
-								type="submit">Sign in</button>
-							<hr class="my-4">
+								type="submit">로그인</button>
+							<!-- <hr class="my-4">
 							Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a>
 							or <a href="javascript:void(0)" onclick="findpassword()">Password</a>?
 							<button class="btn btn-lg btn-secondary btn-block text-uppercase" onclick="location.href='join'"
-								>Join</button>
+								>Join</button> -->
 						</form>
 						
 							<div >

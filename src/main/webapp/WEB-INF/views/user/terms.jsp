@@ -10,7 +10,7 @@ TemplateMo 561 Purple Buzz
 
 https://templatemo.com/tm-561-purple-buzz
 
--->
+--><title>이용약관</title>
 </head>
 
 <body>
@@ -21,10 +21,10 @@ https://templatemo.com/tm-561-purple-buzz
     <!-- Start Contact -->
     <section class="container py-5">
 
-        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">대여안내</h1>
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">이용약관</h1>
               <p class="col-12 col-xl-8 text-left text-muted pb-5 light-300">
         <h2 class="col-12 col-xl-8 h4 text-left regular-400">   
-            ${guide.content }
+            ${terms.content }
          </h2>
 
     </section>

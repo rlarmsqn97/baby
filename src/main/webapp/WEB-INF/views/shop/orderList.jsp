@@ -33,16 +33,6 @@
         <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
             <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
                 <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">주문내역</h1>
-                <h3 class="h4 pb-2 regular-400">Elit, sed do eiusmod tempor incididunt</h3>
-                <p class="banner-body pb-2 light-300">
-                    Vector illustration <a class="text-white" href="http://freepik.com/" target="_blank">Freepik</a>.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Quis ipsum suspendisse ultrices gravida. Risus
-                    commodo viverra maecenas accumsan lacus.
-                </p>
-                <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300">Learn More</button>
-                <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300">Contact Us</button>
             </div>
         </div>
     </div>
@@ -68,24 +58,24 @@
 
 </section>
  
-   <!-- Start Footer -->
- 	<footer class="bg-secondary pt-4" style="bottom: 0; width: 100%">
+ <!-- Start Footer -->
+    <footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
 
               
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">회사소개</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/introduce'">회사소개</h2>
                                 
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">개인정보취급방침</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/rule'">개인정보취급방침</h2>
                     
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">이용약관</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/terms'">이용약관</h2>
                    
                 </div>
   
@@ -94,6 +84,7 @@
 
     </footer>
     <!-- End Footer -->
+
    
 
 

@@ -35,4 +35,27 @@
 		where userId = #{userId}		
 	</delete>
 	
+	<!-- 대여 안내 글 -->
+	<select id="guideList" resultType="com.boo.dto.GuideVO">
+		select * from guide
+	</select>
+	
+	
+	<!-- 회사소개 글 -->
+	<select id="introList" resultType="com.boo.dto.IntroVO">
+		select * from introduce
+	</select>
+	
+	
+	<!-- 개인정보취급방침 글 -->
+	<select id="ruleList" resultType="com.boo.dto.RuleVO">
+		select * from rule
+	</select>
+	
+	
+	<!-- 이용약관 글 -->
+	<select id="termsList" resultType="com.boo.dto.TermsVO">
+		select * from terms
+	</select>
+	
 </mapper>

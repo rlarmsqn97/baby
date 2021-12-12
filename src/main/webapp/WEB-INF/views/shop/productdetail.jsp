@@ -20,14 +20,8 @@
     <div id="work_single_banner" class="bg-light w-100" style="height:500px">
         <div class="container-fluid text-light d-flex justify-content-center align-items-center border-0 rounded-0 p-0 py-5">
             <div class="banner-content col-lg-8 m-lg-auto text-center py-5 px-3">
-                <h1 class="banner-heading h2 pb-5 typo-space-line-center">Digital Marketing</<h1>
-                </h1>
-                <h3 class="h4 pb-2 light-300">Voluptatem accusantium doloremque</h3>
-                <p class="banner-footer light-300">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Integer ut ipsum eu libero venenatis euismod.
-                </p>
+                <h1 class="banner-heading h2 pb-5 typo-space-line-center">상품상세</<h1>
+                </h1>            
             </div>
         </div>
     </div>
@@ -141,23 +135,23 @@
   
 
    <!-- Start Footer -->
- 	<footer class="bg-secondary pt-4" style="bottom: 0; width: 100%">
+    <footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
 
               
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">회사소개</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/introduce'">회사소개</h2>
                                 
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">개인정보취급방침</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/rule'">개인정보취급방침</h2>
                     
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">이용약관</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/terms'">이용약관</h2>
                    
                 </div>
   
@@ -166,6 +160,7 @@
 
     </footer>
     <!-- End Footer -->
+
 
   <!-- JavaScript Bundle with Popper -->
     <!-- Page Script -->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +18,8 @@
     <section>
         <div class="recent-user item">
             <div class="item-caption">
-                <div class="item-title">최근 가입 회원</div>
+                <div class="item-title">최근 가입 회원(7일 이내)</div>
+                <div class="more" onclick="location.href='/admin/userList'">more +</div>
             </div>
             <div class="item-content">
                 <table>
@@ -44,18 +46,17 @@
                 </table>
             </div>
         </div>
-        <div class="num-visitors item">
+        <div class="recent-user item">
             <div class="item-caption">
                 <div class="item-title">판매순위</div>
             </div>
             <div class="item-content">
-                           <table>
+                 <table>
                     <thead>
                         <tr>
                             <th>순위</th>
                             <th>상품명</th>
                             <th>총액</th>
-                           
                         </tr>
                     </thead>
                     <tbody>
@@ -68,13 +69,12 @@
                        </c:forEach>
                     </tbody>
                 </table>  
-            </div>
-            
-    
+            </div>    
         </div>
         <div class="recent-order item">
             <div class="item-caption">
                 <div class="item-title">배송준비 중 목록</div>
+                <div class="more" onclick="location.href='/admin/orderList'">more +</div>
             </div>
             <div class="item-content">
                 <table>
@@ -99,7 +99,7 @@
                            <td>${ready.orderPhon}</td>
                            <td>${ready.rentCar}</td>
                            <td>${ready.reQu}</td>
-                           <td>${ready.orderDate}</td>
+                           <td><fmt:formatDate value="${ready.orderDate}"/></td>
                            <td>${ready.startDate}</td>
                            <td>${ready.endDate}</td>
                            <td>${ready.delivery}</td>
@@ -113,7 +113,7 @@
         <div class="recent-item item">
             <div class="item-caption">
                 <div class="item-title">최근 등록 상품</div>
-                <div class="more" onclick="location.href='/admin/product/prodcutlist'">more +</div>
+                <div class="more" onclick="location.href='/admin/product/productlist'">more +</div>
             </div>
             <div class="item-content">
                 <table>
@@ -137,7 +137,7 @@
  							<td>${pd.pdStock }</td>
  							<td>${pd.pdDes }</td>
  							<td>${pd.pdAge }</td>
- 							<td>${pd.pdDate }</td>                                        
+ 							<td><fmt:formatDate value="${pd.pdDate }"/></td>                                        
                         </tr> 
                         </c:forEach>
                     </tbody>

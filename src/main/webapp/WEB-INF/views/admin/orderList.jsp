@@ -20,15 +20,7 @@
 <%@ include file="nav/admin_nav.jsp" %>
     <nav th:replace="admin/admin_nav :: navFragment"></nav>
     <section>
-        <form class= "search-form" id="search-form" method="get" action="#">
-            <div class="form-group">
-                <label class="form-label">주문일</label>
-                <span>
-                    <input type="date" name="firstdate" class="date">&nbsp;~ 
-                    <input type="date" name="lastdate" class="date">
-                </span>
-            </div>
-           
+        <form class= "search-form" id="search-form" method="get" action="#">        
             <div class="form-group">
                 <label class="form-label">검색어</label>
                 <span>

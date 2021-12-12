@@ -9,10 +9,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.boo.dto.GuideVO;
+import com.boo.dto.IntroVO;
+import com.boo.dto.RuleVO;
+import com.boo.dto.TermsVO;
 import com.boo.dto.UserVO;
 import com.boo.service.UserService;
 
@@ -163,10 +168,32 @@ public class UserController {
 		return "work-single";
 	}
 	
-	
+	// 대여안내
 	@RequestMapping(value = "/guide", method = RequestMethod.GET)
-	public void guide() {
+	public void guide(GuideVO vo,Model model) throws Exception{
+		GuideVO guide = service.guideList(vo);
+		model.addAttribute("guide", guide);
+	}
 	
+	// 회사소개
+	@RequestMapping(value = "/introduce", method = RequestMethod.GET)
+	public void introduce(IntroVO vo,Model model) throws Exception{
+		IntroVO intro = service.introList(vo);
+		model.addAttribute("intro", intro);
+	}
+	
+	// 개인정보처리방침
+	@RequestMapping(value = "/rule", method = RequestMethod.GET)
+	public void rule(RuleVO vo,Model model) throws Exception{
+		RuleVO rule = service.ruleList(vo);
+		model.addAttribute("rule", rule);
+	}
+	
+	// 이용약관
+	@RequestMapping(value = "/terms", method = RequestMethod.GET)
+	public void terms(TermsVO vo,Model model) throws Exception{
+		TermsVO terms = service.termsList(vo);
+		model.addAttribute("terms", terms);
 	}
 	
 	@RequestMapping(value = "/qna", method = RequestMethod.GET)

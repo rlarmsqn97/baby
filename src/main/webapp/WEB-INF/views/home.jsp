@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <meta charset="utf-8">
 <head>
@@ -30,59 +31,19 @@
                         <div class="py-5 row d-flex align-items-center">
                             <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
                                 <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
-                                    Develop <strong>Strategies</strong> for 
-                                  <br>your business
+                                    강동구 <strong>카시트</strong> 이용해보세요 
+                                  <br>
                               </h1>
-                                <p class="banner-body text-muted py-3 mx-0 px-0">
-                                    Purple Buzz is a corporate HTML template with Bootstrap 5 Beta 1. This CSS template is 100% free to download provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_parent">TemplateMo</a>. Total 6 HTML pages included in this template. Icon fonts by <a rel="nofollow" href="https://boxicons.com/" target="_blank">Boxicons</a>. Photos are from <a rel="nofollow" href="https://unsplash.com/" target="_blank">Unsplash</a> and <a rel="nofollow" href="https://icons8.com/" target="_blank">Icons 8</a>.
+                                <p class="banner-body text-muted py-3 mx-0 px-0">      
                               </p>
-                                <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
+                                
                             </div>
                         </div>
 
                     </div>
-                    <div class="carousel-item">
-
-                        <div class="py-5 row d-flex align-items-center">
-                            <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
-                                <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
-                                    HTML CSS Template with Bootstrap 5 Beta 1
-                                </h1>
-                                <p class="banner-body text-muted py-3">
-                                    You are not allowed to re-distribute this Purple Buzz HTML template as a downloadable ZIP file on any kind of Free CSS collection websites. This is strongly prohibited. Please contact TemplateMo for more information.
-                                </p>
-                                <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <div class="py-5 row d-flex align-items-center">
-                            <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
-                                <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
-                                    Cupidatat non proident, sunt in culpa qui officia
-                                </h1>
-                                <p class="banner-body text-muted py-3">
-                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
-                                </p>
-                                <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
-                            </div>
-                        </div>
-
-                    </div>
+                  
                 </div>
-                <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="prev" style="height:500px;">
-                    <i class='bx bx-chevron-left'></i>
-                    <span class="visually-hidden">Previous</span>
-                </a>
-                <a class="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="next" style="height:500px;">
-                    <i class='bx bx-chevron-right'></i>
-                    <span class="visually-hidden">Next</span>
-                </a>
+               
             </div>
             <!-- End slider -->
 
@@ -133,117 +94,52 @@
     <!-- End View Work -->
 
     <!-- Start Recent Work -->
-    <section class="py-5 mb-5">
+     <section class="py-5 mb-5">
         <div class="container">
             <div class="recent-work-header row text-center pb-5">
                 <h2 class="col-md-6 m-auto h2 semi-bold-600 py-5">대여 상품</h2>
             </div>
             
             <div class="row gy-5 g-lg-5 mb-4">
-
+				<c:forEach items="${list }" var="list">
                 <!-- Start Recent Work -->
                 <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-01.jpg" alt="Card image">
+                    <a href="/shop/productdetail?n=${list.pdNum }" class="recent-work card border-0 shadow-lg overflow-hidden">
+                        <img class="recent-work-img card-img" src="${list.pdThumbImg }">
                         <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                             <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">Social Media</h3>
-                                <p class="card-text">Ullamco laboris nisi ut aliquip ex</p>
+                                <h3 class="card-title light-300">상품명 : ${list.pdName }</h3>
+                                <p class="card-text">   상품가격 : ${list.pdPrice }</p>
                             </div>
                         </div>
                     </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-02.jpg" alt="Card image">
-                        <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">Web Marketing</h3>
-                                <p class="card-text">Psum officia anim id est laborum.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-03.jpg" alt="Card image">
-                        <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">R & D</h3>
-                                <p class="card-text">Sum dolor sit consencutur</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-04.jpg" alt="Card image">
-                        <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">Public Relation</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-05.jpg" alt="Card image">
-                        <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">Branding</h3>
-                                <p class="card-text">Put enim ad minim veniam</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-md-4 mb-3">
-                    <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                        <img class="recent-work-img card-img" src="resources/img/recent-work-06.jpg" alt="Card image">
-                        <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                <h3 class="card-title light-300">Creative Design</h3>
-                                <p class="card-text">Mollit anim id est laborum.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
+                </div>
+                </c:forEach>
             </div>
-        </div>
-    </section>
+        </div>      
+    </section> 
     <!-- End Recent Work -->
 
 
 
-    <!-- Start Footer -->
- 	<footer class="bg-secondary pt-4" style="bottom: 0; width: 100%">
+     <!-- Start Footer -->
+    <footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
 
               
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">회사소개</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/introduce'">회사소개</h2>
                                 
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">개인정보취급방침</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/rule'">개인정보취급방침</h2>
                     
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">이용약관</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300" onclick="location.href='/user/terms'">이용약관</h2>
                    
                 </div>
   

@@ -11,12 +11,14 @@
 
     <!-- Start pricing -->
     <div class="container-lg py-5">
-        <div class="col-md-12 m-auto text-center py-5">
-            <h1 class="pricing-header h2 semi-bold-600">이용후기</h1>
-            <p class="pricing-footer">
-                <!-- Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut facilisis. -->
-            </p>
+          <!-- Start Banner Hero -->
+    <div id="work_banner" class="banner-wrapper bg-light w-100 py-5"style="height:500px">
+        <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+            <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+                <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">장바구니</h1>
+            </div>
         </div>
+    </div>
 
 
         <div class="row px-lg-3">

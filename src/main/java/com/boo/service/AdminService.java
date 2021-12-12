@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.boo.dao.AdminDAO;
 import com.boo.dto.CategoryVO;
+import com.boo.dto.GuideVO;
+import com.boo.dto.IntroVO;
 import com.boo.dto.OrderListVO;
 import com.boo.dto.OrderVO;
 import com.boo.dto.ProductVO;
 import com.boo.dto.ProductViewVO;
 import com.boo.dto.RankVO;
+import com.boo.dto.RuleVO;
+import com.boo.dto.TermsVO;
 import com.boo.dto.UserVO;
 
 @Service
@@ -106,4 +110,64 @@ public class AdminService {
 		return dao.rank(rank);
 	}
 	
+	// 대여안내 등록
+	public void guide(GuideVO vo) throws Exception {
+		dao.guide(vo);
+	}
+	
+	// 대여안내 수정
+	public void guideModify(GuideVO vo) throws Exception {
+		dao.guideModify(vo);
+	}
+	// 대여안내 삭제
+	public void guideDelete(GuideVO vo) throws Exception {
+		dao.guideDelete(vo);
+	}
+
+	// 회사소개 등록
+	public void introWrite(IntroVO vo) throws Exception {
+		dao.introWrite(vo);
+	}
+
+	// 회사소개 수정
+	public void introModify(IntroVO vo) throws Exception {
+		dao.introModify(vo);
+	}
+
+	// 회사소개 삭제
+	public void introDelete(IntroVO vo) throws Exception {
+		dao.introDelete(vo);
+	}
+
+	// 개인정보취급방침 등록
+	public void ruleWrite(RuleVO vo) throws Exception {
+		dao.ruleWrite(vo);
+	}
+
+	// 개인정보취급방침 수정
+	public void ruleModify(RuleVO vo) throws Exception {
+		dao.ruleModify(vo);
+	}
+
+	// 개인정보취급방침 삭제
+	public void ruleDelete(RuleVO vo) throws Exception {
+		dao.ruleDelete(vo);
+	}
+
+	// 이용약관 등록
+	public void termsWrite(TermsVO vo) throws Exception {
+		dao.termsWrite(vo);
+	}
+
+	// 이용약관 수정
+	public void termsModify(TermsVO vo) throws Exception {
+		dao.termsModify(vo);
+	}
+
+	// 이용약관 삭제
+	public void termsDelete(TermsVO vo) throws Exception {
+		dao.termsDelete(vo);
+	}
+	
+
 }

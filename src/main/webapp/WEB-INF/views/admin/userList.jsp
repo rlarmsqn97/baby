@@ -61,22 +61,7 @@
             <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn" th:onclick="|deleteCheckedUsers()|">
 
         </div>
-        <!-- 여기 수정 -->
-        <div class="paginate">
-            <ul class="pagination justify-content-center">
-                <li >
-                    <a>Previous</a>
-                </li>
-
-                <li>
-                    <a ></a></li>
-
-                <li>
-                    <a>Next</a>
-                </li>
-            </ul>
-        </div>
-        <!-- 여기까지 -->
+     
     </div>
 </section>
 <script src="/resources/js/admin/admin_nav.js"></script>

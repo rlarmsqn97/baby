@@ -48,8 +48,13 @@
 							</div>
 							<br>
 							<div class="form-label-group">
-								<input type="password" id="userPhon" name="userPhon" class="form-control"
+								<input type="text" id="userPhon" name="userPhon" class="form-control"
 									placeholder="전화번호" required>
+							</div>
+							<br>
+								<div class="form-label-group">
+								<input type="email" id="userMail" name="userMail" class="form-control"
+									placeholder="임시이메일" required>
 							</div>
 							<br>
 								<div class="form-label-group">

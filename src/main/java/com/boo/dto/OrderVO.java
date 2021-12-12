@@ -15,8 +15,17 @@ public class OrderVO {
 	private String startDate;
 	private String endDate;
 	private int pdNum;
+	private String pdName;
 	
 	
+	
+	
+	public String getPdName() {
+		return pdName;
+	}
+	public void setPdName(String pdName) {
+		this.pdName = pdName;
+	}
 	public int getPdNum() {
 		return pdNum;
 	}
