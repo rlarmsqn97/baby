@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/admin/admin_operation.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/admin_user.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/main.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/nav/admin_nav.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/product/productregister.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/userList.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/shop/productdetail.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/about.jsp=UTF-8

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boo.mappers.visitcountMapper">
+
+
+ <insert id="visitcount" parameterType="com.boo.dto.VisitVO">
+       insert into visit(v_date) values (now())
+  </insert>
+  
+  <select id="totalcount" resultType="com.boo.dto.VisitVO">
+  	select count(*) from visit
+  </select>
+  
+  <select id="todaycount" resultType="com.boo.dto.VisitVO">
+ 	select count(*) from visit
+  	where DATE_FORMAT(v_date,'%y-%m-%d') = DATE_FORMAT(NOW(), '%y-%m-%d')
+  </select>
+</mapper>
+   

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.boo.mappers.qnaMapper">
+	
+	<!-- qna 작성 -->
+	<insert id="write" parameterType="com.board.dto.QnaDto">
+		insert into
+			qna_board(title, content, userName)
+				values(#{title}, #{content}, #{userName})
+	</insert>
+	
+	<!-- qna 조회 -->
+	<select id="view" parameterType="int" resultType="com.board.dto.QnaDto">
+		select
+			bno, title, content, userName, regDate, viewCnt
+		from
+			qna_board
+		where
+			bno = #{bno}
+	</select>
+	
+	<!-- qna 수정 -->
+	<update id="modify" parameterType="com.board.dto.QnaDto">
+		update qna_board
+			set
+				title = #{title},
+				content = #{content}
+			where bno = #{bno}
+	</update>
+	
+	<!-- qna 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete 
+			from qna_board
+		where bno = #{bno}
+	</delete>
+	
+	<!-- qna 목록 + 페이징 + 검색 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.board.dto.QnaDto">
+		select
+			bno, title, userName, regDate, viewCnt
+		from qna_board
+		
+		<if test='searchType.equals("title")'>
+			where title like concat('%', #{keyword}, '%')
+		</if>
+		
+		<if test='searchType.equals("content")'>
+		  WHERE content LIKE concat('%', #{keyword}, '%')
+		 </if>
+		 
+		 <if test='searchType.equals("title_content")'>
+		  WHERE title LIKE concat('%', #{keyword}, '%') 
+		   or content LIKE concat('%', #{keyword}, '%')
+		 </if>
+		 
+		 <if test='searchType.equals("userName")'>
+		  WHERE userName LIKE concat('%', #{keyword}, '%')
+		 </if>
+ 
+		order by bno desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- qna 총 갯수 + 검색 적용 -->
+	<select id="searchCount" resultType="int">
+		select count(bno) from qna_board
+	</select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.boo.mappers.qnaReplyMapper">
+	
+	<!-- 댓글 조회 -->
+	<select id="qnaReplyList" parameterType="int" resultType="com.board.dto.QnaReplyDto">
+		select
+			rno, bno, userName, content, regDate
+		from qna_reply
+			where bno = #{bno}
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="qnaReplyWrite" parameterType="com.board.dto.QnaReplyDto">
+		insert into qna_reply(bno, userName, content)
+			value(#{bno}, #{userName}, #{content})
+	</insert>
+	
+	<!-- 댓글 수정 -->
+	<update id="qnaReplyModify" parameterType="com.board.dto.QnaReplyDto">
+		update qna_reply set
+			content = #{content}
+		where rno = #{rno}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="qnaReplyDelete" parameterType="int">
+		delete from qna_reply
+		where rno = #{rno}
+	</delete>
+</mapper>

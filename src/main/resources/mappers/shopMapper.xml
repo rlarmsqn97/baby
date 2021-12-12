@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boo.mappers.shopMapper">
+   
+
+<select id="list_1" resultType="com.boo.dto.ProductViewVO">
+select
+    g.pdNum, g.pdName, g.cateCode, c.cateCodeRef, c.cateName, pdPrice, pdAge, pdDes, pdImg, pdDate, g.pdImg, g.pdThumbImg
+        from product g
+            inner join category c
+                on g.cateCode = c.cateCode           
+            where g.cateCode = #{cateCode}
+             or c.cateCodeRef = #{cateCodeRef}
+</select>
+
+<!-- 카테고리별 상품 리스트 : 2차 분류 -->
+<select id="list_2" resultType="com.boo.dto.ProductViewVO">
+select
+	g.pdNum, g.pdName, g.cateCode, c.cateCodeRef, c.cateName, pdPrice, pdAge, pdDes, pdImg, pdDate, g.pdImg, g.pdThumbImg
+        from product g
+            inner join category c
+                on g.cateCode = c.cateCode           
+            where g.cateCode = #{cateCode}
+</select>
+
+	
+	<!-- 상품 조회 + 카테고리 조인-->
+	<select id="productView" resultType="com.boo.dto.ProductViewVO">
+		 select
+		     g.pdNum, g.pdName, g.cateCode, c.cateCodeRef, c.cateName, pdPrice, pdAge,pdDes,pdStock, pdImg, pdDate, g.pdImg, g.pdThumbImg
+		         from product g
+		             inner join category c
+		                 on g.cateCode = c.cateCode          
+		            where g.pdNum = #{pdNum}
+	</select>
+	
+	<insert id="addCart">
+		insert into cart(cartNum,userId,pdNum,cartStock,startDate,endDate)
+		values(null,#{userId},#{pdNum},#{cartStock},#{startDate},#{endDate})
+	</insert>
+	
+	<!-- 카트 리스트 -->
+	<select id="cartList" resultType="com.boo.dto.CartListVO">
+		select
+			row_number() over(order by c.cartNum desc) as num,
+			c.cartNum, c.userId, c.pdNum, c.cartStock, c.addDate, c.startDate, c.endDate,
+			g.pdName, g.pdPrice, g.pdThumbImg
+		from cart c
+			inner join product g
+				on c.pdNum = g.pdNum
+			where c.userId = #{userId} 
+	</select>
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+	 delete from cart
+	     where cartNum = #{cartNum}
+	         and userId = #{userId}
+	</delete>
+
+	<!-- 장바구니 전체 금액 -->
+	<select id="sumMoney" resultType="int">
+		select ifnull(sum(pdPrice * cartStock), 0) money
+		from cart c, product p
+		where c.pdNum = p.pdNum and c.userId = #{userId}
+	</select>
+	
+	<!-- 주문정보 -->
+	<insert id="orderInfo">
+		insert into boo_order(orderId, userId, rentCar, orderPhon, amount, reQu, orderName, startDate, endDate,pdNum )
+			values(#{orderId}, #{userId}, #{rentCar}, #{orderPhon}, #{amount}, #{reQu}, #{orderName}, #{startDate}, #{endDate},#{pdNum})
+	</insert>
+	
+	<!-- 주문 상세 정보 -->
+	<insert id="orderInfo_Details">
+		insert into order_detail(orderDetailsNum, orderId, pdNum, cartStock)
+			select null,#{orderId},pdNum, cartStock
+			 from cart
+	</insert>
+	
+		<!-- 단일상품 주문 정보 -->
+	<insert id="orderInfo_buy">
+		insert into order_detail(orderDetailsNum, orderId, pdNum, cartStock)
+			values(null,#{orderId},#{pdNum},#{cartStock})
+	</insert>
+	
+	<delete id="cartAllDelete">
+		delete from cart
+			where userId = #{userId}
+	</delete>
+	
+	<select id="orderList" resultType="com.boo.dto.OrderVO">
+		select orderId, userId, rentCar, orderPhon, amount, orderDate, orderName, reQu, delivery , startDate, endDate
+			from boo_order
+				where userId = #{userId}
+				order by orderId desc
+	</select>
+	
+	<select id="orderView" resultType="com.boo.dto.OrderListVO">
+		select	
+			o.orderId, o.userId, o.rentCar, o.orderPhon, o.amount, o.orderDate, o.orderName, o.reQu, o.delivery,
+			d.orderDetailsNum, d.pdNum, d.cartStock,
+			g.pdName, g.pdThumbImg, g.pdPrice
+		from boo_order o
+			inner join order_detail d
+				on o.orderId = d.orderId
+			inner join product g
+				on d.pdNum = g.pdNum
+		where o.userId = #{userId}
+			and o.orderId = #{orderId}
+	</select>
+	
+
+</mapper>

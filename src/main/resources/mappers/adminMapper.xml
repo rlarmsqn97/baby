@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace ="com.boo.mappers.adminMapper">
+
+		<!-- 카테고리 호출 -->
+		<select id="category" resultType="com.boo.dto.CategoryVO">
+			WITH recursive cte AS (
+			SELECT cateName, cateCode, cateCodeRef, 1 AS level
+			FROM category
+			WHERE cateCodeRef IS null
+			UNION all
+			SELECT p.cateName, p.cateCode, p.cateCodeRef, 1 + LEVEL AS level
+			FROM category p
+			INNER JOIN cte
+			ON p.cateCodeRef = cte.cateCode
+			)
+			SELECT cateName, cateCode, cateCodeRef, LEVEL FROM cte;
+		</select>
+	<!-- 상품 등록 -->
+	<insert id="register">
+		 insert into product (pdNum, pdName, cateCode, pdPrice, pdDes, pdAge, pdImg, pdThumbImg, pdStock)
+		    		 values (NULL, #{pdName}, #{cateCode},#{pdPrice}, #{pdDes}, #{pdAge}, #{pdImg}, #{pdThumbImg}, #{pdStock})
+	</insert>
+	
+	<!-- 상품 목록 --> 
+	<select id="productlist" resultType="com.boo.dto.ProductVO">
+		 select
+		   pdNum, pdName, pdPrice, pdAge, pdThumbImg
+		    from product
+		        order by pdNum desc
+	</select>
+	
+	<!-- 상품 조회 + 카테고리 조인-->
+	<select id="productView" resultType="com.boo.dto.ProductViewVO">
+		 select
+		     g.pdNum, g.pdName, g.cateCode, c.cateCodeRef, c.cateName, pdPrice, pdAge,pdDes, pdImg, pdDate, g.pdImg, g.pdThumbImg
+		         from product g
+		             inner join category c
+		                 on g.cateCode = c.cateCode          
+		            where g.pdNum = #{pdNum}
+	</select>
+	
+	<!-- 상품 수정 -->
+		<update id="pdModify">
+		 update product
+		     set
+		         pdName = #{pdName},
+		         cateCode = #{cateCode},
+		         pdPrice = #{pdPrice},		     
+		         pdDes = #{pdDes},
+		         pdAge = #{pdAge},
+		         pdImg = #{pdImg},
+		         pdThumbImg = #{pdThumbImg}
+		     where pdNum = ${pdNum}
+		</update>
+		
+	<!-- 상품 삭제 -->
+	<delete id="pdDelete">
+	 delete from
+	     product
+	 where pdNum = #{pdNum}
+	</delete>
+	
+	<!-- 주문 목록 -->
+	<select id="orderList" resultType="com.boo.dto.OrderVO">
+		select
+			orderId, userId, rentCar, amount, orderDate, orderPhon, delivery, startDate, endDate, orderName
+		from boo_order
+		    order by orderId desc
+	</select>
+	
+	<!-- 특정 주문 목록 -->
+	<select id="orderView" resultType="com.boo.dto.OrderListVO">
+		select
+			o.orderId, o.userId, o.rentCar, o.orderPhon, o.orderName, o.amount, o.orderDate, o.reQu, o.delivery, o.startDate, o.endDate,
+			d.orderDetailsNum, d.pdNum, d.cartStock,
+			g.pdName, g.pdThumbImg, g.pdPrice
+		from boo_order o
+			inner join order_detail d
+				on o.orderId = d.orderId
+			inner join product g
+				on d.pdNum = g.pdNum
+		where o.orderId = #{orderId}		
+	</select>
+	
+	<!-- 배송 상태 -->
+	<update id="delivery">
+		update boo_order
+			set delivery = #{delivery}
+		where orderId = #{orderId}
+	</update>
+	
+	<!-- 상품 수량 조절 -->
+	<update id="changeStock">
+		update product 
+			set pdStock = pdStock - #{pdStock}
+		where pdNum = #{pdNum}
+	</update>
+	
+	<!-- 상품 수량 조절 보조 -->
+	<select id="changeStock_sub" resultType="com.boo.dto.OrderDetailVO">
+		select
+			orderId, pdNum, cartStock
+		from order_detail
+			where orderId = #{orderId}
+	</select>
+	
+	<!-- 회원 목록 -->
+	<select id="userList" resultType="com.boo.dto.UserVO">
+		select
+			userName, userPhon, userMail, regiDate, userId
+		from user
+	</select>
+	
+	<!-- 회원상세 -->
+	<select id="userView" resultType="com.boo.dto.UserVO">
+		select
+			userName, userPhon, userMail, regiDate, userId
+		from user
+		where userId = #{userId} 
+	</select>
+	
+	<!-- 회원상세 주문한 회원-->
+	<select id="userDetail" resultType="com.boo.dto.UserVO">
+		select 
+			u.userName, u.userPhon, u.userMail, u.regiDate, u.userId,
+			o.userId, o.amount, o.orderDate, o.reQu, o.delivery, o.startDate, o.endDate,
+			d.cartStock, d.orderId, d.pdNum,
+			p.pdThumbImg, p.pdName, p.pdPrice, p.pdNum
+		from boo_order o
+			inner join user u
+				on o.userId = u.userId
+			inner join order_detail d
+				on d.orderId = o.orderId
+			inner join product p
+				on d.pdNum = p.pdNum
+		where u.userId = #{userId}
+	</select>
+
+	<!-- 회원 등록 -->
+	<insert id="join">
+		 insert into user(userId, userPw, userName, userPhon)
+		  values(#{userId}, #{userPw}, #{userName}, #{userPhon}) 
+	</insert>
+	
+	<!-- 최근 회원 7일기준 -->
+	<select id="seven" resultType="com.boo.dto.UserVO">
+		SELECT * FROM user WHERE regiDate > date_add(now(),INTERVAL -7 day)
+	</select>
+	
+	<!-- 배송준비 출력 -->
+	<select id="ready" resultType="com.boo.dto.OrderVO">
+		select * from boo_order where delivery = '배송준비'
+	</select>
+	
+	<!-- 최근 등록 상품 -->
+	<select id="nearpd" resultType="com.boo.dto.ProductVO">
+		select * from product order by pdDate desc
+	</select>
+	
+	<!-- 판매 순위 -->
+	<select id="rank" resultType="com.boo.dto.OrderVO">
+		select o.pdNum, o.amount, p.pdNum, p.pdName from boo_order o inner join product p where o.pdNum = p.pdNum order by amount desc 
+	</select>
+	
+</mapper>
