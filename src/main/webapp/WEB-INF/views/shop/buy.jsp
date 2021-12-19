@@ -73,7 +73,7 @@
 						<label class="form-label">상품명 : ${view.pdName }</label><br> <label
 							class="form-label">사용연령 : ${view.pdAge }</label><br> <label
 							class="form-label">가격 : </label>
-						<fmt:formatNumber pattern="###,###,###" value="${view.pdPrice * c}"></fmt:formatNumber>
+						<fmt:formatNumber pattern="###,###,###" value="${view.pdPrice * (c + d)}"></fmt:formatNumber>
 						<br> <label class="form-label"> 구입 수량 : <input
 							type="text" class="numBox" value="${c }" readonly="readonly" />
 						</label><br> <span> <label class="form-label">대여일</label> <input
@@ -81,6 +81,7 @@
 							&nbsp;~ <label class="form-label">반납일</label> <input type="text"
 							id="endDate" class="datetime" value="${e }">
 						</span>
+							<label class="form-label">차이 일수 : ${d}</label><br> 
 					</div>
 				</div>
 			</div>
@@ -88,7 +89,7 @@
 			<div class="orderInfo">
 				<form role="form" method="post" autocomplete="off">
 
-					<input type="hidden" name="amount" id="amount" value="${view.pdPrice * c}" />
+					<input type="hidden" name="amount" id="amount" value="${view.pdPrice * (c + d)}" />
 					<input type="hidden" name="cartStock" id="cartStock" value="${c }" />
 
 					<div class="inputArea">

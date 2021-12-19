@@ -1,7 +1,9 @@
 package com.boo.controller;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -176,30 +179,53 @@ public class ShopController {
 	// 단일 상품 주문
 	@RequestMapping(value = "/buy", method = RequestMethod.GET)
 	public void getBuy(Model model,String startDate,String endDate,String pdnum,String cartStock) throws Exception{
+		
+		long calDateDays = 0;
+		
+		 try{ // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
+		        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
+		        Date FirstDate = format.parse(startDate);
+		        Date SecondDate = format.parse(endDate);
+		        
+		        // Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화 하고 있다.
+		        // 연산결과 -950400000. long type 으로 return 된다.
+		        long calDate = FirstDate.getTime() - SecondDate.getTime(); 
+		        
+		        // Date.getTime() 은 해당날짜를 기준으로1970년 00:00:00 부터 몇 초가 흘렀는지를 반환해준다. 
+		        // 이제 24*60*60*1000(각 시간값에 따른 차이점) 을 나눠주면 일수가 나온다.
+		        calDateDays = calDate / ( 24*60*60*1000); 
+		 
+		        calDateDays = Math.abs(calDateDays);
+		        
+		        System.out.println("두 날짜의 날짜 차이: "+calDateDays);
+		        
+		        }
+		        catch(ParseException e)
+		        {
+		            // 예외 처리
+		        }
 
-	  
 		int pdNum = Integer.parseInt(pdnum); 
 		/*
 		 * String cartStock = (String) param.get("cartStock"); String startDate =
 		 * (String) param.get("startDate"); String endDate = (String)
 		 * param.get("endDate");
 		 */
+	
 		
 		ProductViewVO view = service.productView(pdNum);
 		
-		
-		model.addAttribute("view",view);
-		
-		
+		model.addAttribute("view",view);		
 		model.addAttribute("s",startDate);
 		model.addAttribute("e",endDate);
 		model.addAttribute("c",cartStock);
+		model.addAttribute("d",calDateDays);
 		
-		System.out.println("pdNum : " + pdNum);
-		System.out.println(cartStock);
-		System.out.println(startDate);
-		System.out.println(endDate);
-		
+		/*
+		 * System.out.println("pdNum : " + pdNum); System.out.println(cartStock);
+		 * System.out.println(startDate); System.out.println(endDate);
+		 */
 	}
 	
 	// 단일 상품 주문

@@ -241,19 +241,17 @@
  </script>
 
   <!-- 예약하기 버튼 -->
-  <!-- <script>
+  <script>
  	$(".btn.btn-secondary.text-yellow").click(function() {
  		location.href="/shop/buy"
- 		
- 		var pdNum = ${view.pdNum};
- 		var cartStock = $(".numBox").val();
+
  		var startDate =  $.datepicker.formatDate("yy-mm-dd",$("#startDate").datepicker("getDate"));		
  		var endDate = $.datepicker.formatDate("yy-mm-dd",$("#endDate").datepicker("getDate"));
  		
- 		console.log("pdNum = " + pdNum);
- 		console.log("cartStock = " + cartStock);
+ 		
  		console.log("startDate = " + startDate);
  		console.log("endDate = " + endDate);
+ 		console.log("반납일 - 대여일 = " + endDate.add(Calendar.DATE, -startDate));
  		
  		var data = {
  				pdnum : pdNum,
@@ -261,25 +259,8 @@
  				startDate : startDate,
  				endDate : endDate
  		};
- 		$.ajax({
- 			url : "/shop/buy",
- 			type : "get",
- 			data : data
- 		/* 	success : function(result) {
-			if(result == 1){ 				
- 				alert("카트 담기 성공");
- 				$(".numBox").val("1");
- 			} else {
- 				alert("로그인해주세요")
- 				$(".numBox").val("1");
- 			  }
- 			},
- 			error : function() {
- 				alert("담기 실패");
- 			}	 */
- 		});
  	});
- </script> -->
+ </script>
  
 <script>
 	$(function () {

@@ -34,6 +34,9 @@
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
 								type="submit">로그인</button>
+							<c:if test="${msg == false}">
+								<p style="color: #f00;">로그인에 실패했습니다.</p>
+							</c:if>
 							<!-- <hr class="my-4">
 							Forgot your <a href="javascript:void(0)" onclick="findid()">ID</a>
 							or <a href="javascript:void(0)" onclick="findpassword()">Password</a>?
